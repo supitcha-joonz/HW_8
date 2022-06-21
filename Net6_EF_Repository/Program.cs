@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//register dependency injection
+//register dependency injection Branches
 builder.Services.AddTransient<IBranchesRepository, BranchesRepository>();
 builder.Services.AddTransient<IBranchesService, BranchesService>();
 
@@ -19,6 +19,11 @@ builder.Services.AddDbContext<BranchMgmtContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
 });
+
+//register dependency injection Applications
+builder.Services.AddTransient<IApplicationsRepository, ApplicationsRepository>();
+builder.Services.AddTransient<IApplicationsService, ApplicationsService>();
+
 
 var app = builder.Build();
 
